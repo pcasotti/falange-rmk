@@ -1,0 +1,104 @@
+[keyboard]
+name = "Falange RMK"
+product_name = "Falange RMK"
+vendor_id = 0x4c4b
+product_id = 0x4643
+manufacturer = "pcasotti"
+chip = "nrf52840"
+
+[rmk]
+vial_enabled = true
+
+[layout]
+rows = 4
+cols = 10
+layers = 8
+keymap = [
+    [
+        ["Grave", "Comma", "Dot", "P", "Y", "L", "R", "C", "G", "F"],
+        ["A", "O", "E", "U", "I", "S", "N", "T", "H", "D"],
+        ["Slash", "Q", "J", "K", "X", "Z", "V", "W", "M", "B"],
+        ["__", "__", "__", "LShift", "MO(1)", "__", "__", "__", "Space", "MO(2)"]
+    ],
+    [
+        ["BrightnessDown", "BrightnessUp", "Tab", "AudioVolDown", "AudioVolUp", "Delete", "Enter", "UP", "End", "Home"],
+        ["LShift", "LCtrl", "LAlt", "LGui", "AudioMute", "Backspace", "Right", "Down", "Left", "PageUp"],
+        ["PrintScreen", "Z", "X", "C", "V", "__", "__", "__", "__", "PageDown"],
+        ["__", "__", "__", "TG(6)", "__", "__", "__", "__", "MO(5)", "MO(2)"]
+    ],
+    [
+        ["WM(Kc2, LShift)", "RightBracket", "WM(RightBracket, LShift)", "WM(Kc9, LShift)", "WM(Kc4, LShift)", "WM(Dot, LShift)", "NonusHash", "WM(NonusHash, LShift)", "WM(Kc0, LShift)", "WM(Comma, LShift)"],
+        ["Escape", "WM(Kc8, LShift)", "Minus", "KpEqual", "WM(Equal, LShift)", "RShift", "RCtrl", "LAlt", "LGui", "WM(Kc7, LShift)"],
+        ["WM(NonusBackslash, LShift)", "WM(Kc3, LShift)", "WM(Minus, LShift)", "WM(Kc1, LShift)", "WM(Kc5, LShift)", "WM(Quote, LShift)", "WM(International1, LShift)", "Quote", "International1", "NonusBackslash"],
+        ["__", "__", "__", "MO(4)", "MO(1)", "__", "__", "__", "LeftBracket", "__"]
+    ],
+    [
+        ["Kc1", "Kc2", "Kc3", "Kc4", "Kc5", "Kc0", "Kc9", "Kc8", "Kc7", "Kc6"],
+        ["LShift", "LCtrl", "LAlt", "LGui", "F11", "RShift", "RCtrl", "LAlt", "LGui", "F12"],
+        ["F1", "F2", "F3", "F4", "F5", "F10", "F9", "F8", "F7", "F6"],
+        ["__", "__", "__", "__", "__", "__", "__", "__", "__", "__"]
+    ],
+    [
+        ["__", "__", "__", "__", "__", "__", "__", "Semicolon", "__", "__"],
+        ["Macro0", "Macro1", "Macro2", "Macro3", "Macro4", "__", "__", "__", "__", "__"],
+        ["__", "__", "__", "__", "__", "__", "__", "__", "__", "__"],
+        ["__", "__", "__", "__", "__", "__", "__", "__", "__", "__"]
+    ],
+    [
+        ["__", "MouseBtn2", "MouseUp", "MouseBtn1", "MouseWheelUp", "User11", "User10", "__", "__", "__"],
+        ["__", "MouseLeft", "MouseDown", "MouseRight", "MouseWheelDown", "User4", "User3", "User2", "User1", "User0"],
+        ["__", "__", "__", "__", "__", "__", "__", "__", "__", "__"],
+        ["__", "__", "__", "__", "__", "__", "__", "__", "__", "__"]
+    ],
+    [
+        ["Tab", "Q", "W", "E", "R", "__", "__", "UP", "__", "__"],
+        ["LShift", "A", "S", "D", "F", "__", "Right", "Down", "Left", "__"],
+        ["LCtrl", "Z", "X", "C", "V", "__", "__", "__", "__", "__"],
+        ["__", "__", "__", "Space", "MO(7)", "__", "__", "__", "Space", "__"]
+    ],
+    [
+        ["Kc5", "Kc4", "__", "Kc1", "Kc2", "__", "__", "__", "__", "__"],
+        ["Escape", "__", "__", "Kc3", "Enter", "__", "__", "__", "__", "__"],
+        ["Grave", "B", "T", "P", "Y", "__", "__", "__", "__", "__"],
+        ["__", "__", "__", "TG(6)", "__", "__", "__", "__", "__", "__"]
+    ]
+]
+
+[storage]
+clear_storage = false
+
+[ble]
+enabled = true
+battery_adc_pin = "vddh"
+
+[behavior.tri_layer]
+upper = 1
+lower = 2
+adjust = 3
+
+[split]
+connection = "ble"
+
+[split.central]
+rows = 4
+cols = 5
+row_offset = 0
+col_offset = 0
+ble_addr = [0x18, 0xe2, 0x21, 0x80, 0xc0, 0xc7]
+
+[split.central.matrix]
+matrix_type = "normal"
+input_pins = ["P0_22", "P0_24", "P1_00", "P1_04"]
+output_pins = ["P0_09", "P0_10", "P1_11", "P0_11", "P1_06"]
+
+[[split.peripheral]]
+rows = 4
+cols = 5
+row_offset = 0
+col_offset = 5
+ble_addr = [0x7e, 0xfe, 0x73, 0x9e, 0x66, 0xe3]
+
+[split.peripheral.matrix]
+matrix_type = "normal"
+input_pins = ["P0_22", "P0_24", "P1_00", "P1_04"]
+output_pins = ["P0_09", "P0_10", "P1_11", "P0_11", "P1_06"]
