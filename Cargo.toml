@@ -11,7 +11,6 @@ display-interface = "0.5.0"
 ssd1306 = { version = "0.10.0", features = ["async"] }
 embedded-graphics = "0.8.1"
 log = { version = "0.4" }
-# rmk = { default-features = false, git = "https://github.com/HaoboGu/rmk.git", rev = "b91715bd9dd01c4134b1fece7eb3a82e1437d0a8", features = [
 rmk = { default-features = false, path = "../rmk/rmk", features = [
     "nrf52840_ble",
     "split",
@@ -19,28 +18,27 @@ rmk = { default-features = false, path = "../rmk/rmk", features = [
     "adafruit_bl",
     "controller",
     "usb_log",
-    "col2row",
     "storage",
     "vial",
     "vial_lock"
 ] }
-nrf-sdc = { version = "0.3", default-features = false, features = [
+nrf-sdc = { git = "https://github.com/alexmoon/nrf-sdc", rev = "11d5c3c", features = [
     "defmt",
     "peripheral",
     "central",
     "nrf52840",
 ] }
-nrf-mpsl = { version = "0.3", default-features = false, features = [
+nrf-mpsl = { git = "https://github.com/alexmoon/nrf-sdc", rev = "11d5c3c", features = [
     "defmt",
     "critical-section-impl",
     "nrf52840",
 ] }
-bt-hci = { version = "0.4", default-features = false, features = ["defmt"] }
+bt-hci = { version = "0.6", features = ["defmt"] }
 
 cortex-m = "0.7.7"
 cortex-m-rt = "0.7.5"
 embassy-time = { version = "0.5", features = ["tick-hz-32_768", "defmt", "defmt-timestamp-uptime"] }
-embassy-nrf = { version = "0.7", features = [
+embassy-nrf = { version = "0.8", features = [
     "defmt",
     "nrf52840",
     "time-driver-rtc1",

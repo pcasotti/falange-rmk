@@ -80,7 +80,7 @@ impl<'a> Graphics<'a> {
 }
 
 type Display = Ssd1306Async<
-    I2CInterface<Twim<'static, TWISPI0>>,
+    I2CInterface<Twim<'static>>,
     DisplaySize128x32,
     BufferedGraphicsModeAsync<DisplaySize128x32>,
 >;
