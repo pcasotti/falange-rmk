@@ -278,7 +278,7 @@ impl<'a, SDA: Pin, SCL: Pin> PollingController for DisplayController<'a, SDA, SC
     async fn update(&mut self) {
         match self.display.take() {
             Some(mut display) => {
-                if self.draw(&mut display).await.is_ok() {
+                if let Ok(Ok(_)) = self.draw(&mut display).with_timeout(Duration::from_millis(100)).await {
                     self.display = Some(display);
                 }
             }
@@ -297,12 +297,10 @@ impl<'a, SDA: Pin, SCL: Pin> PollingController for DisplayController<'a, SDA, SC
                 let mut display =
                     Ssd1306Async::new(interface, DisplaySize128x32, DisplayRotation::Rotate0)
                         .into_buffered_graphics_mode();
-                if display
+                if let Ok(Ok(_)) = display
                     .init()
                     .with_timeout(Duration::from_secs(1))
-                    .await
-                    .is_ok()
-                {
+                    .await {
                     self.display = Some(display);
                 }
             }
